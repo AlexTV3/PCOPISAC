@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="3; url=productos.html">
+  <title>Bienvenido a la tienda de PerezCOPISAC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Oswald:wght@500&family=Roboto&family=Russo+One&family=Teko:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #EDEDED, #D6D6D6);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #2C3E20;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 1rem;
+    }
+
+    .logo-text h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-family: 'Russo One', sans-serif;
+      color: white;
+    }
+
+    .logo-text p {
+      margin: 0;
+      font-size: 0.9rem;
+      font-family: 'Montserrat', sans-serif;
+      opacity: 0.8;
+    }
+
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: url('uploads/fondoLogin.jpg') no-repeat center center;
+      background-size: cover;
+      position: relative;
+    }
+
+    main::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(255, 255, 255, 0.6);
+      z-index: 0;
+    }
+
+    .contenido {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .contenido h1 {
+      font-size: 2.2rem;
+      color: #2C3E20;
+      font-family: 'Teko', sans-serif;
+      margin-bottom: 1rem;
+    }
+
+    .contenido p {
+      font-size: 1.1rem;
+      color: #333;
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="uploads/LogoPequeño.jpg" alt="Logo Empresa">
+      <div class="logo-text">
+        <h1>CREACIONES COPI S.A.C.</h1>
+        <p>Ropa táctica y textil para las Fuerzas Armadas</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="contenido">
+      <h1>Bienvenido a la tienda de PerezCOPISAC</h1>
+      <p>Estás siendo redirigido a nuestra página principal de productos...</p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "tienda-backend",
+  "version": "1.0.0",
+  "description": "Backend para conectar con SQL Server",
+  "main": "apps.js",
+  "scripts": {
+    "start": "node apps.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mssql": "^11.0.1",
+    "multer": "^2.0.1"
+  }
+}
+

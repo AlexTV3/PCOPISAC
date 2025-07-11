@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito de Compras</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Oswald:wght@500&family=Roboto&family=Russo+One&family=Teko:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(rgba(237,237,237,0.85), rgba(237,237,237,0.85)),
+                  url('uploads/fondo-tactico.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #2C3E20;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 1rem;
+    }
+
+    .logo-text h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-family: 'Russo One', sans-serif;
+    }
+
+    .logo-text p {
+      margin: 0;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    h2 {
+      font-family: 'Teko', sans-serif;
+      font-size: 2rem;
+      color: #2C3E20;
+    }
+
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: #2C3E20;
+    }
+
+    table {
+      width: 100%;
+      max-width: 800px;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    button {
+      background-color: #2C3E20;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      margin: 10px 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #151515;
+    }
+
+        nav {
+      background-color: #1C1C1C;
+      display: flex;
+      justify-content: center;
+      padding: 0.5rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 500;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    select, input {
+      font-family: 'Montserrat', sans-serif;
+      padding: 6px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #facturaCampos {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #contenidoCarrito {
+      width: 100%;
+      max-width: 800px;
+    }
+
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+      }
+
+      td::before {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+      }
+
+      td:nth-of-type(1)::before { content: "Producto"; }
+      td:nth-of-type(2)::before { content: "Cantidad"; }
+      td:nth-of-type(3)::before { content: "Precio"; }
+      td:nth-of-type(4)::before { content: "Subtotal"; }
+      td:nth-of-type(5)::before { content: "Acciones"; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="uploads/LogoPequeño.jpg" alt="Logo Empresa" />
+      <div class="logo-text">
+        <h1>CREACIONES COPI S.A.C.</h1>
+        <p>Ropa táctica y textil para las Fuerzas Armadas</p>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <a href="productos.html">Productos</a>
+    <a href="carrito.html">Carrito</a>
+    <a href="https://www.facebook.com/perezcopi/?locale=es_LA" target="_blank" rel="noopener noreferrer">Contacto</a>
+  </nav>
+
+  <main>
+    <h2>Carrito con tus Compras</h2>
+    <div id="contenidoCarrito"></div>
+
+    <h3>Tipo de Comprobante</h3>
+    <select id="tipoComprobante" required>
+      <option value="Boleta">Boleta</option>
+      <option value="Factura">Factura</option>
+      <option value="Proforma">Proforma</option>
+    </select>
+
+    <div id="facturaCampos">
+      <input type="text" id="ruc" placeholder="RUC (11 dígitos)" pattern="\d{11}" />
+      <input type="text" id="razonSocial" placeholder="Razón Social" />
+    </div>
+
+    <div>
+      <button id="btnFinalizar">Realizar compra</button>
+      <button onclick="window.location.href='productos.html'">Volver</button>
+    </div>
+  </main>
+
+  <script>
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    if (!usuario) {
+      alert('Debes iniciar sesión para acceder al carrito');
+      window.location.href = 'login.html';
+    }
+
+    function renderizarCarrito() {
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      const contenedor = document.getElementById('contenidoCarrito');
+      const btnFinalizar = document.getElementById('btnFinalizar');
+
+      if (carrito.length === 0) {
+        contenedor.innerHTML = '<p>El carrito sigue vacío... Compra algo p</p>';
+        btnFinalizar.style.display = 'none';
+        return;
+      }
+
+      let tabla = `
+        <table>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>Subtotal</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      let total = 0;
+      carrito.forEach((p, index) => {
+        const subtotal = p.PrecioUnitario * p.cantidad;
+        total += subtotal;
+        tabla += `
+          <tr>
+            <td>${p.NombreProd}</td>
+            <td>${p.cantidad}</td>
+            <td>S/. ${p.PrecioUnitario.toFixed(2)}</td>
+            <td>S/. ${subtotal.toFixed(2)}</td>
+            <td><button onclick="eliminarProducto(${index})">Eliminar</button></td>
+          </tr>
+        `;
+      });
+
+      tabla += `
+          </tbody>
+        </table>
+        <h3>Total: S/. ${total.toFixed(2)}</h3>
+      `;
+
+      contenedor.innerHTML = tabla;
+      btnFinalizar.style.display = 'inline';
+    }
+
+    function eliminarProducto(index) {
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      carrito.splice(index, 1);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      renderizarCarrito();
+    }
+
+    document.getElementById('tipoComprobante').addEventListener('change', e => {
+      const tipo = e.target.value;
+      document.getElementById('facturaCampos').style.display = tipo === 'Factura' ? 'flex' : 'none';
+    });
+
+    document.getElementById('btnFinalizar').addEventListener('click', async () => {
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      if (!carrito.length) return alert('Tu carrito está vacío.');
+
+      const tipoComprobante = document.getElementById('tipoComprobante').value;
+      const ruc = document.getElementById('ruc').value.trim();
+      const razonSocial = document.getElementById('razonSocial').value.trim();
+
+      if (tipoComprobante === 'Factura') {
+        if (!/^\d{11}$/.test(ruc)) return alert('RUC inválido.');
+        if (!razonSocial) return alert('Debes ingresar la razón social.');
+      }
+
+      try {
+        const res = await fetch('http://18.229.155.129:3000/compras', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            carrito,
+            ID_Cliente: usuario.id,
+            tipoComprobante,
+            ruc: tipoComprobante === 'Factura' ? ruc : null,
+            razonSocial: tipoComprobante === 'Factura' ? razonSocial : null
+          })
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          alert('Compra realizada y registrada con éxito :D');
+          localStorage.removeItem('carrito');
+          window.location.href = 'productos.html';
+        } else {
+          alert(data.mensaje || 'Error al finalizar compra');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Ocurrió un error al enviar la compra D:');
+      }
+    });
+
+    renderizarCarrito();
+  </script>
+</body>
+</html>
